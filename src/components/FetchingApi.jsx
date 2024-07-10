@@ -27,52 +27,81 @@ function FetchingApi({ language }) {
   }, [language]);
 
   return (
-    <div className="max-w-md mx-auto p-4 pt-6 pb-8 bg-white rounded shadow-lg">
-      {todos?.map((todo) => (
-        <div key={todo.id} className="container w-full max-w-md p-4 mb-4">
-          <div className="flex flex-col items-center">
-            <a href={todo.html_url} target="_blank">
-              <img
-                src={todo.owner.avatar_url}
-                alt={todo.owner.login}
-                width="200"
-                height="200"
-              ></img>
-            </a>
-            <h2 className="text-lg font-bold">
-              <a href={todo.html_url} target="_blank">
-                {todo.name}
-              </a>
-            </h2>
-            <p className="text-gray-600">
-              <a href={todo.owner.html_url} target="_blank">
-                <FontAwesomeIcon icon={faUser} /> {todo.owner.login}
-              </a>
-            </p>
-
-            <p className="text-gray-600">
-              <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B" }} />
-              {todo.stargazers_count}
-            </p>
-            <p className="text-gray-600">
-              <FontAwesomeIcon
-                icon={faCodeBranch}
-                style={{ color: "#74C0FC" }}
-              />
-              {todo.forks}
-            </p>
-            <p className="text-gray-600">
-              <FontAwesomeIcon
-                icon={faTriangleExclamation}
-                style={{ color: "#ce0926" }}
-              />
-              {todo.open_issues}
-            </p>
+    <div className="max-w-7xl mx-auto p-4 bg-zinc-400 rounded shadow-lg">
+      <div className="flex flex-wrap -mx-4">
+        {todos?.map((todo, index) => (
+          <div
+            key={todo.id}
+            className="w-full xs:w-1/2 sm:w-1/2 lg:w-1/3 px-4 mb-4"
+          >
+            <div className="bg-white p-4 rounded shadow-lg">
+              <div className="flex flex-col items-center">
+                <p className="text-gray-800 mt-2 font-bold">
+                  # {index} {/* Displaying the index number */}
+                </p>
+                <a
+                  href={todo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={todo.owner.avatar_url}
+                    alt={todo.owner.login}
+                    className="w-32 h-32 rounded-full"
+                  />
+                </a>
+                <h2 className="text-lg font-bold mt-4">
+                  <a
+                    href={todo.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {todo.name}
+                  </a>
+                </h2>
+                <p className="text-gray-600 mt-2 flex items-center">
+                  <a
+                    href={todo.owner.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center"
+                  >
+                    <FontAwesomeIcon icon={faUser} className="mr-2" />
+                    {todo.owner.login}
+                  </a>
+                </p>
+                <p className="text-gray-600 mt-2 flex flex-col items-center">
+                  <span className="flex items-center">
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      className="mr-2"
+                      style={{ color: "#FFD43B" }}
+                    />
+                    {todo.stargazers_count} star
+                  </span>
+                  <span className="flex items-center mt-2">
+                    <FontAwesomeIcon
+                      icon={faCodeBranch}
+                      className="mr-2"
+                      style={{ color: "#74C0FC" }}
+                    />
+                    {todo.forks} 
+                    forks
+                  </span>
+                  <span className="flex items-center mt-2">
+                    <FontAwesomeIcon
+                      icon={faTriangleExclamation}
+                      className="mr-2"
+                      style={{ color: "#ce0926" }}
+                    />
+                    {todo.open_issues} open issue
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
-          <br/>
-          <hr />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

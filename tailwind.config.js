@@ -2,7 +2,11 @@
 export default {
   content: ["./src/**/*.{html,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'xs': '601px',  // Custom breakpoint for extra small screens
+      },
+    },
   },
   plugins: [],
 }
